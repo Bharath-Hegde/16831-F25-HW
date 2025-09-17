@@ -116,7 +116,7 @@ backgroundcolor = \color{light-yellow}
 \subsection{Part 3 (5.25 pt)}
 \begin{table}[htbp]
   \centering
-  \caption{n\_layers=5, learning\_rate=3e-3. Rest are default values.}
+  \caption{n\_layers=5, learning\_rate=3e-3, eval\_batch\_size=5000. Rest are default values.}
     \begin{tabular}{ccccc}
     \toprule[1.0pt]
     Env   & \multicolumn{2}{c}{Ant-v2} & \multicolumn{2}{c}{Humanoid-v2} \\
@@ -135,7 +135,7 @@ backgroundcolor = \color{light-yellow}
 \includegraphics[width=0.7\columnwidth]{graphs/learning_rate_sweep.png}
 	\caption{The graph shows mean return $\pm$ standard deviation of the BC Agent in Ant-v2 environment over approximately 5 rollouts for each learning rate value: 1e-4, 5e-4, 1e-3, 5e-3, 1e-2 and 5e-2.
   Rest of the hyperparameters are same as in 1.2.
-  Learning rate was chosen because it controls the gradient step size and can impact both convergence speed and final performance, as can beseen from the graph.
+  Learning rate was chosen because it controls the gradient step size and can impact both convergence speed and final performance, as can be seen from the graph.
   }
 	\label{fig:p4}
 \end{figure*}
