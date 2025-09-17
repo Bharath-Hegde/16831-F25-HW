@@ -269,6 +269,13 @@ class RL_Trainer(object):
 
             logs["Train_EnvstepsSoFar"] = self.total_envsteps
             logs["TimeSinceStart"] = time.time() - self.start_time
+            
+            # Calculate performance ratio (agent performance / expert performance)
+            expert_performance = np.mean(train_returns)  # Expert performance from training data
+            agent_performance = np.mean(eval_returns)    # Agent performance from evaluation
+            performance_ratio = agent_performance / expert_performance if expert_performance > 0 else 0
+            logs["Performance_Percentage"] = performance_ratio * 100
+            
             last_log = training_logs[-1]  # Only use the last log for now
             logs.update(last_log)
 
