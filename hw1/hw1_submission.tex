@@ -98,7 +98,6 @@ backgroundcolor = \color{light-yellow}
 
 \section{Behavioral Cloning (9.75 pt)}
 \subsection{Part 2 (1.5 pt)}
-% \# TODO
 \begin{table}[!h]
   \centering
   \caption{Mean and standard deviation of return over two trajectories of the expert data for each environment.}
@@ -116,14 +115,14 @@ backgroundcolor = \color{light-yellow}
 \subsection{Part 3 (5.25 pt)}
 \begin{table}[htbp]
   \centering
-  \caption{n\_layers=5, learning\_rate=3e-3, eval\_batch\_size=5000. Rest are default values.}
+  \caption{Hyperparameters: n\_layers=5, learning\_rate=3e-3, eval\_batch\_size=5000; rest are default values. BC Agent reaches 47.85\% and 7.99\% of the expert performance for Ant-v2 and Hopper-v2 environments respectively.}
     \begin{tabular}{ccccc}
     \toprule[1.0pt]
-    Env   & \multicolumn{2}{c}{Ant-v2} & \multicolumn{2}{c}{Humanoid-v2} \\
+    Env   & \multicolumn{2}{c}{Ant-v2} & \multicolumn{2}{c}{Hopper-v2} \\
     \midrule
     Metric & Mean  & Std.  & Mean  & Std. \\
-    Expert & 4713.65 & 12.20 & 10344.52 & 20.98 \\
-    BC    & 2255.59 & 1699.11 & 301.69 & 92.56 \\
+    Expert & 4713.65 & 12.20 & 3772.67 & 1.95 \\
+    BC    & 2255.59 & 1699.11 & 301.59 & 359.24 \\
     \bottomrule[1.0pt]
     \end{tabular}%
   \label{tab:p3}%
@@ -133,20 +132,22 @@ backgroundcolor = \color{light-yellow}
 \begin{figure*}[!h]
 	\centering
 \includegraphics[width=0.7\columnwidth]{graphs/learning_rate_sweep.png}
-	\caption{The graph shows mean return $\pm$ standard deviation of the BC Agent in Ant-v2 environment over approximately 5 rollouts for each learning rate value: 1e-4, 5e-4, 1e-3, 5e-3, 1e-2 and 5e-2.
-  Rest of the hyperparameters are same as in 1.2.
+	\caption{The graph shows mean return $\pm$ standard deviation of the BC Agent in Ant-v2 environment over approximately five rollouts for each learning rate value: 1e-4, 5e-4, 1e-3, 5e-3, 1e-2 and 5e-2.
+  Rest of the hyperparameters are same as in Table 2. 
   Learning rate was chosen because it controls the gradient step size and can impact both convergence speed and final performance, as can be seen from the graph.
   }
 	\label{fig:p4}
 \end{figure*}
-
+\newpage
 \section{DAgger (5.25 pt)}
 \subsection{Part 2 (5.25 pt)}
-\# TODO, Report the results for Ant-v2 and [Another Env] in \fref{fig:p5}:
 \begin{figure*}[!h]
 	\centering
-	\includegraphics[width=1.0\columnwidth]{graphs/test.png}
-	\caption{Learning curve, plotting the number of DAgger iterations vs. the policy’s mean return, with error bars to show the standard deviation. Please show the Ant-v2 environment results on the left and the results from [Another Env] on the right.}
+	\includegraphics[width=1.0\columnwidth]{graphs/dagger_learning_curves.png}
+	\caption{DAgger learning curves for Ant-v2 (left) and Hopper-v2 (right) environments.
+  The graphs show mean return $\pm$ standard deviation over approximately five rollouts for each DAgger iteration. 
+  Hyperparameters: n\_layers=3, n\_iter=8, eval\_batch\_size=5000; rest are default values.
+  As seen, DAgger outperforms BC agent, reaching 99.8\% of the expert performance in both environments.}
 	\label{fig:p5}
 \end{figure*}
 
