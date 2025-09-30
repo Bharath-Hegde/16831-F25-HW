@@ -47,7 +47,9 @@ class PGAgent(BaseAgent):
         # HINT2: look at the MLPPolicyPG class for how to update the policy
             # and obtain a train_log
 
-        raise NotImplementedError
+        q_values = self.calculate_q_vals(rewards_list)
+        advantages = self.estimate_advantage(observations, rewards_list, q_values, terminals)
+        train_log = self.actor.update(observations, actions, advantages, q_values)
 
         return train_log
 
@@ -75,12 +77,12 @@ class PGAgent(BaseAgent):
 
         if not self.reward_to_go:
             #use the whole traj for each timestep
-            raise NotImplementedError
+            q_values = np.concatenate([self._discounted_return(traj_reward) for traj_reward in rewards_list])
 
         # Case 2: reward-to-go PG
         # Estimate Q^{pi}(s_t, a_t) by the discounted sum of rewards starting from t
         else:
-            raise NotImplementedError
+            q_values = np.concatenate([self._discounted_cumsum(traj_reward) for traj_reward in rewards_list])
 
         return q_values  # return an array
 
@@ -143,9 +145,10 @@ class PGAgent(BaseAgent):
         if self.standardize_advantages:
             ## TODO: standardize the advantages to have a mean of zero
             ## and a standard deviation of one
-
-            raise NotImplementedError
-            advantages = TODO
+            mean = np.mean(advantages)
+            std = np.std(advantages)
+            if std != 0: advantages = (advantages - mean) / std
+            else: advantages = advantages - mean
 
         return advantages
 
@@ -171,21 +174,33 @@ class PGAgent(BaseAgent):
             Output: array where each index t contains sum_{t'=0}^T gamma^t' r_{t'}
         """
 
-        # TODO: create discounted_returns
-        raise NotImplementedError
+        # sum = rewards[0]
+        # gamma_t = self.gamma
+        # for i in range(1, len(rewards)):
+        #     sum += gamma_t * rewards[i]
+        #     gamma_t *= self.gamma
+        # return [sum for _ in range(len(rewards))]
 
-        return discounted_returns
+        gammas = self.gamma ** np.arange(len(rewards))
+        total_discounted_return = np.sum(rewards * gammas)
+        return np.full(len(rewards), total_discounted_return)
 
     def _discounted_cumsum(self, rewards):
         """
             Helper function which
             -takes a list of rewards {r_0, r_1, ..., r_t', ... r_T},
-            -and returns an array where the entry in each index t' is sum_{t'=t}^T gamma^(t'-t) * r_{t'}
+            -and returns an array where the entry in each index t is sum_{t'=t}^T gamma^(t'-t) * r_{t'}
         """
 
         # TODO: create `discounted_cumsums`
         # HINT: it is possible to write a vectorized solution, but a solution
             # using a for loop is also fine
-        raise NotImplementedError
-
+        
+        cumsum = 0
+        discounted_cumsums = np.zeros(len(rewards))
+        for i in range(1,len(rewards)+1):
+            cumsum *= self.gamma
+            cumsum += rewards[len(rewards)-i]
+            discounted_cumsums[len(rewards)-i] = cumsum
+            
         return discounted_cumsums
