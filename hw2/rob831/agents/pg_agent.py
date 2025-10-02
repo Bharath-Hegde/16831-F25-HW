@@ -18,6 +18,9 @@ class PGAgent(BaseAgent):
         self.nn_baseline = self.agent_params['nn_baseline']
         self.reward_to_go = self.agent_params['reward_to_go']
         self.gae_lambda = self.agent_params['gae_lambda']
+        
+        # Multi-step PG parameters
+        self.num_gradient_steps = self.agent_params.get('num_gradient_steps', 1)
 
         # actor/policy
         self.actor = MLPPolicyPG(
@@ -49,7 +52,15 @@ class PGAgent(BaseAgent):
 
         q_values = self.calculate_q_vals(rewards_list)
         advantages = self.estimate_advantage(observations, rewards_list, q_values, terminals)
-        train_log = self.actor.update(observations, actions, advantages, q_values)
+        
+        # Multi-step PG: take multiple gradient steps on the same batch
+        total_policy_loss = 0.0
+        for step in range(self.num_gradient_steps):
+            train_log = self.actor.update(observations, actions, advantages, q_values)
+            total_policy_loss += train_log['Training Loss']
+        
+        # Average the loss across gradient steps for logging
+        train_log['Training Loss'] = total_policy_loss / self.num_gradient_steps
 
         return train_log
 
