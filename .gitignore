@@ -1,1 +1,9 @@
 hw3_test/
+*.txt
+*.aux
+*.log
+*.out
+*.pdf
+*.png
+*.zip
+!requirements.txt
