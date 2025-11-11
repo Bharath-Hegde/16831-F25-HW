@@ -7,3 +7,4 @@ hw3_test/
 *.png
 *.zip
 !requirements.txt
+!submissions/*.pdf
