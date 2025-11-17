@@ -69,36 +69,36 @@ backgroundcolor = \color{light-yellow}
 \end{centering}
 \vspace{0.25cm}
 
-\textbf{Andrew ID:} \texttt{Write your Andrew ID here.} \\
-\textbf{Collaborators:} \texttt{Write the Andrew IDs of your collaborators here (if any).}\\ 
+\textbf{Andrew ID:} \texttt{bharathh} \\
+\textbf{Collaborators:} \texttt{N/A}\\ 
 \textbf{NOTE:} Please do \textbf{NOT} change the sizes of the answer blocks or plots.
 
 \setcounter{section}{0}
 \section{Problem 1: Dynamics Model Training [4pts]}
-Answer to theory questions.\\
+The model \texttt{q1\_cheetah\_n500\_arch2x200} performs best with least MPE as well as training loss. The other two, the smaller model that runs for same number of steps, and the same sized model that runs for only 10 steps, both perform worse. This indicates that a larger model can better approximate complex dynamics, at the same time it requires sufficient number of training steps to do so.\\
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q1_cheetah_n500_arch1x16_cheetah-hw4_part1-v0_17-11-2025_01-01-27/itr_0_predictions.png}
 \end{answer}
 
 \begin{answer}[title=Plot 2,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q1_cheetah_n10_arch2x200_cheetah-hw4_part1-v0_17-11-2025_01-02-36/itr_0_predictions.png}
 \end{answer}
 
 \begin{answer}[title=Plot 3,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q1_cheetah_n500_arch2x200_cheetah-hw4_part1-v0_17-11-2025_01-04-26/itr_0_predictions.png}
 \end{answer}
 
 \section{Problem 2: Action Selection [4pts]}
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q2_obstacles_singleiteration_obstacles-hw4_part1-v0_17-11-2025_03-55-50/train_eval_comparison.png}
 \end{answer}
 
 
@@ -107,40 +107,48 @@ Answer to theory questions.\\
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q3_obstacles_obstacles-hw4_part1-v0_17-11-2025_04-33-11/train_eval_comparison.pdf}
 \end{answer}
 
 \begin{answer}[title=Plot 2,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q3_reacher_reacher-hw4_part1-v0_17-11-2025_04-34-52/train_eval_comparison.pdf}
 \end{answer}
 
 \begin{answer}[title=Plot 3,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/hw4_q3_cheetah_cheetah-hw4_part1-v0_17-11-2025_04-54-08/train_eval_comparison.pdf}
 \end{answer}
 
+\clearpage
 \section{Problem 4: Hyper-parameter Comparison [4pts]}
+
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/plots_q4/q4_ensemble.pdf}
 \end{answer}
 
+\textbf{Ensemble size:}  While the initial performance of the larger ensemble is better, all converge to similar performance ($\sim$-270). Ensemble 1 shows highest variance, while 3 and 5 are more stable.
 
 \begin{answer}[title=Plot 2,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/plots_q4/q4_action_sequence.pdf}
 \end{answer}
 
+\textbf{Number of Candidate Action Sequences:} More action sequences (N=1000) consistently outperforms fewer sequences (N=100) throughout training, indicating that higher N provides better coverage of action space, and thus action selection.
+
+\clearpage
 \begin{answer}[title=Plot 3,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/plots_q4/q4_planning.pdf}\\
 \end{answer}
+
+\textbf{Planning Horizon:} Shorter horizons (H=5, H=15) perform better than the longest horizon (H=30), indicating that very long horizons accumulate model prediction errors, degrading planning quality.
 
 \section{Problem 5: CEM (Bonus) [2.5pts]}
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
