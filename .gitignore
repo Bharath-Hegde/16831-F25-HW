@@ -8,3 +8,10 @@ hw3_test/
 *.zip
 !requirements.txt
 !submissions/*.pdf
+*.swp
+*.egg-info
+*.pyc
+pyproject.toml
+uv.lock
+*.out.tfevents*
+*.npy
