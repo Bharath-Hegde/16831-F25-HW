@@ -70,7 +70,7 @@ backgroundcolor = \color{light-yellow}
 \vspace{0.25cm}
 
 \textbf{Andrew ID:} \texttt{bharathh} \\
-\textbf{Collaborators:} \texttt{N/A}\\ 
+\textbf{Collaborators:} \texttt{ChatGPT}\\ 
 \textbf{NOTE:} Please do \textbf{NOT} change the sizes of the answer blocks or plots.
 
 \setcounter{section}{0}
@@ -154,32 +154,43 @@ The model \texttt{q1\_cheetah\_n500\_arch2x200} performs best with least MPE as 
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/plots_q4/q5.pdf}
 \end{answer}
+
+\textbf{CEM:} CEM outperforms random shooting, and increasing CEM iterations from 2 to 4 more than doubles performance, indicating that iterative refinement of the sampling distribution is useful for action optimsation.
 
 \section{Problem 6: Exploration (Bonus) [2.5pts]}
 \begin{answer}[title=Plot 1,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=7.5cm,width=0.45\linewidth]{rob831/data/hw4_part2_expl_q6_env1_rnd_PointmassEasy-v0_17-11-2025_22-59-41/curr_state_density.png}\hfill\includegraphics[height=7.5cm,width=0.45\linewidth]{rob831/data/hw4_part2_expl_q6_env1_random_PointmassEasy-v0_17-11-2025_23-03-04/curr_state_density.png}
+
+\textbf{State Density Heatmaps in PointmassEasy env (Left: RND, Right: Random)}
 \end{answer}
+
+
 
 \begin{answer}[title=Plot 2,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=7.5cm,width=0.45\linewidth]{rob831/data/hw4_part2_expl_q6_env2_rnd_PointmassHard-v0_17-11-2025_23-36-00/curr_state_density.png}\hfill\includegraphics[height=7.5cm,width=0.45\linewidth]{rob831/data/hw4_part2_expl_q6_env2_random_PointmassHard-v0_17-11-2025_23-36-08/curr_state_density.png}
+
+\textbf{State Density Heatmaps in PointmassHard env (Left: RND, Right: Random)}
 \end{answer}
 
 \begin{answer}[title=Plot 3,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/plots_q4/q6_comparison_easy.pdf}
 \end{answer}
+
+\textbf{PointmassEasy Performance Curves:} RND converges faster than random exploration. 
 
 \begin{answer}[title=Plot 4,height=9.5cm,width=\linewidth]
 % TODO
 \centering
-\includegraphics[height=8cm]{example-image-a}
+\includegraphics[height=8cm]{rob831/data/plots_q4/q6_comparison_hard.pdf}
 \end{answer}
 
+\textbf{PointmassHard Performance Curves:} The difference between performance is more pronounced in the hard env: not only does RND converge faster, it also performs better on average than random exploration.
 \end{document}
